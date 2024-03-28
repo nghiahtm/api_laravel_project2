@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateManufacturersRequest;
 use App\Http\Resources\V1\ManufacturerCollection;
 use App\Http\Resources\V1\ManufacturerResource;
 use App\Models\Manufacturers;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -18,7 +19,6 @@ class ManufacturersController extends Controller
      */
     public function index(Request $request)
     {
-//        $products = Manufacturers::with(['products']);
         $perPage = $request->get('perPage');
         if(empty($perPage)){
             $perPage = 10;

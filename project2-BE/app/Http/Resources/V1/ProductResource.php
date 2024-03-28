@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\V1;
 
+use App\Models\Manufacturers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -14,15 +15,14 @@ class ProductResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $manufacturer = $this->whenLoaded("manufacturers");
+        $products = Manufacturers::find($this->manufacturer_id);
         return [
             "id" => $this->id,
             "name" => $this->name,
             "image" => $this->image,
-            "id_manufacturer" => $this->manufacturer_id,
             "createdAt" => $this->created_at,
             "updatedAt" => $this->updated_at,
-            "manufacturer" => new ManufacturerResource($manufacturer)
+            "manufacturer" => new ManufacturerResource($products)
         ];
     }
 }

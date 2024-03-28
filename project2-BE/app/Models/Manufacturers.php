@@ -11,6 +11,6 @@ class Manufacturers extends Model
     protected  $fillable = ["id",'name','web_image'];
     public function products()
     {
-        return $this->hasMany(Product::class,"manufacturer_id");
+        return $this->hasMany(Product::class);
     }
 }

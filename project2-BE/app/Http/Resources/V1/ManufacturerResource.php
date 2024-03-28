@@ -16,13 +16,14 @@ class ManufacturerResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $products = Product::where("products.manufacturer_id",$this->id)->count();
         return [
             "id" => $this->id,
             "name" => $this->name,
             "image" => $this->web_image,
             "createdAt" => $this->created_at,
             "updatedAt" => $this->updated_at,
-            "count_products"=> ProductResource::collection($this->whenLoaded("products"))->count()
+           "count_products"=> $products
         ];
     }
 }

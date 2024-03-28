@@ -22,8 +22,9 @@ return Application::configure(basePath: dirname(__DIR__))
             if ($request->is('api/*')) {
                 return response()->json([
                     'message' => $e->getMessage(),
-                    "status_code"=>404
-                ], 404);
+                    "status_code"=>$e->getStatusCode()
+                ], $e->getStatusCode());
             }
+            return $request->expectsJson();
         });
     })->create();

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\V1\ProductCollection;
 use App\Http\Resources\V1\ProductResource;
@@ -12,21 +11,17 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
         $perPage = $request->get('perPage');
         $manufacturer = $request->get('id_manufacturer');
-        print_r($manufacturer);
         if(empty($perPage)){
             $perPage = 10;
         }
         if(empty($manufacturer)){
             $products = new ProductCollection(Product::paginate($perPage));
         }else{
-            $products = Product::where("products.manufacturer_id",$manufacturer)->paginate($perPage);
+            $products = new ProductCollection(Product::where("products.manufacturer_id",$manufacturer)->paginate($perPage));
         }
         return $this->sentSuccessResponse(
             $products
@@ -53,7 +48,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return $this->sentSuccessResponse(new ProductResource($product->loadMissing('manufacturers')));
+        $detailProduct = new ProductResource($product->loadMissing('manufacturers'));
+        return $this->sentSuccessResponse($detailProduct);
 
     }
 
@@ -70,7 +66,11 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $product->update($request->all());
+        return response()->json([
+            "message"=>"update success",
+            "status"=>Response::HTTP_ACCEPTED,
+        ],Response::HTTP_ACCEPTED);
     }
 
     /**
@@ -78,6 +78,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return $this->sentSuccessResponse(
+            "",
+            "delete_success"
+        );
     }
 }
