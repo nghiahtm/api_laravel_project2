@@ -51,7 +51,8 @@ class ManufacturersController extends Controller
      */
     public function show(Manufacturers $manufacturer)
     {
-        return $this->sentSuccessResponse(new ManufacturerResource($manufacturer->loadMissing(['products'])));
+        $manufacturerFind = new ManufacturerResource($manufacturer);
+        return $this->sentSuccessResponse($manufacturerFind);
     }
 
     /**

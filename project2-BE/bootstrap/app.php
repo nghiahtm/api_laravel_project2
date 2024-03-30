@@ -22,8 +22,8 @@ return Application::configure(basePath: dirname(__DIR__))
             if ($request->is('api/*')) {
                 return response()->json([
                     'message' => $e->getMessage(),
-                    "status_code"=>$e->getStatusCode()
-                ], $e->getStatusCode());
+                    "status_code"=>$e->getCode()
+                ], $e->getCode());
             }
             return $request->expectsJson();
         });
