@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string("image")->nullable();
             $table->timestamps();
             $table->integer("manufacturer_id")->nullable();
+            $table->text("description")->nullable();
         });
     }
 
