@@ -16,7 +16,8 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->api([
-            \App\Http\Middleware\EnsureTokenIsValid::class
+            \App\Http\Middleware\EnsureTokenIsValid::class,
+            \App\Http\Middleware\HeadersMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

@@ -14,4 +14,15 @@ abstract class Controller
             ]
         );
     }
+
+    public function  sentErrorResponse($message = "error", $status = 200)
+    {
+        return \response()->json([
+                'data'=>null,
+                "message"=>$message,
+                "status_code"=>$status
+            ],
+            $status
+        );
+    }
 }
