@@ -15,14 +15,16 @@ class ProductResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $products = Manufacturers::find($this->manufacturer_id);
+        $manufacturers = Manufacturers::all();
+        $manufacturer = $manufacturers->find($this->manufacturer_id);
         return [
             "id" => $this->id,
             "name" => $this->name,
             "image" => $this->image,
             "createdAt" => $this->created_at,
             "updatedAt" => $this->updated_at,
-            "manufacturer" => new ManufacturerResource($products)
+            "description" => $this->description,
+            "manufacturer" => new ManufacturerResource($manufacturer)
         ];
     }
 }

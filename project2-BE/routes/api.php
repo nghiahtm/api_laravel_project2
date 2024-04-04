@@ -14,6 +14,7 @@ Route::get('/user', function (Request $request) {
 Route::group(['prefix'=> 'v1'],function (){
     Route::apiResource("products",ProductController::class);
     Route::apiResource("manufacturers",ManufacturersController::class);
+    Route::apiResource("auth",AuthenticationController::class);
 });
 
 Route::group([
@@ -24,5 +25,6 @@ Route::group([
     Route::post('refresh-token', [AuthenticationController::class,"refresh"]);
     Route::post('upload_avatar', [UploadImageController::class,"imageUpload"]);
     Route::get('user', [AuthenticationController::class,"getUser"]);
+    Route::post('register', [AuthenticationController::class,"register"]);
 });
 

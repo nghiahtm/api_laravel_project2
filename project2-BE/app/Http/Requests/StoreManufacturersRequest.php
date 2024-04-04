@@ -37,6 +37,4 @@ class StoreManufacturersRequest extends FormRequest
         ],Response::HTTP_UNPROCESSABLE_ENTITY);
         throw (new $exception($validator,$responseError));
     }
-
-
 }
