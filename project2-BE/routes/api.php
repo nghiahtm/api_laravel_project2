@@ -18,13 +18,17 @@ Route::group(['prefix'=> 'v1'],function (){
 });
 
 Route::group([
-    'prefix' => 'v1'
+    'prefix' => 'v1',
+    'headers' => ['Accept' => 'application/json']
 ], function () {
     Route::post('login', [AuthenticationController::class,"login"]);
-    Route::post('logout', [AuthenticationController::class,"logout"]);
     Route::post('refresh-token', [AuthenticationController::class,"refresh"]);
-    Route::post('upload_avatar', [UploadImageController::class,"imageUpload"]);
-    Route::get('user', [AuthenticationController::class,"getUser"]);
     Route::post('register', [AuthenticationController::class,"register"]);
+});
+
+Route::middleware(["auth:api"])->group( function () {
+    Route::post('v1/logout', [AuthenticationController::class,"logout"]);
+    Route::post('v1/upload_avatar', [UploadImageController::class,"imageUpload"])->middleware("auth:api");
+    Route::get('v1/user', [AuthenticationController::class,"getUser"]);
 });
 
