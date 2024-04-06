@@ -30,5 +30,6 @@ Route::middleware(["auth:api"])->group( function () {
     Route::post('v1/logout', [AuthenticationController::class,"logout"]);
     Route::post('v1/upload_avatar', [UploadImageController::class,"imageUpload"])->middleware("auth:api");
     Route::get('v1/user', [AuthenticationController::class,"getUser"]);
+    Route::post('v1/update', [AuthenticationController::class,"updateUser"]);
 });
 
