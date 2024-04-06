@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('image',500);
             $table->string('phone_number',12)->unique();
-            $table->string('address',500);
+            $table->string('address',500)->nullable();
             $table->enum("roles",["0","1"]);
             $table->enum("genders",["0","1","2"]);
             $table->rememberToken();
