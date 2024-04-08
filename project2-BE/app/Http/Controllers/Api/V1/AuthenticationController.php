@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\RegisterFormRequest;
 use App\Http\Requests\Api\V1\UpdateUserRequest;
 use App\Http\Resources\V1\UserDetailResource;
-use App\Http\Resources\V1\UserResource;
+use App\Http\Resources\V1\UserRegisterResource;
 use App\Models\AuthModel;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -104,17 +104,19 @@ class AuthenticationController extends Controller
 
     public function register(RegisterFormRequest $request)
     {
-        $requestForm = $request->all();
-        $user= User::create($requestForm);
-        $newToken = auth()->login($user);
+        $requestForm = $request->only([
+            "name","email","confirm_password","password","phone_number"
+        ]);
+
+       $user= User::create($requestForm);
+      $newToken = auth()->login($user);
           $refresh = $this->setRefreshToken();
         $collection = collect($requestForm);
         $newCollectUser=$collection->union(["token" =>  ["refresh_token"=> $refresh,
             "access_token"=> $newToken,
             'token_type' => 'Bearer',
             'expires_in' => auth()->factory()->getTTL() * 60]]);
-//        print_r($newToken);
-        $userRes = new UserResource($newCollectUser);
+        $userRes = new UserRegisterResource($newCollectUser);
         return $this->sentSuccessResponse($userRes);
     }
 

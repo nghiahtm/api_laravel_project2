@@ -5,14 +5,13 @@ namespace App\Http\Resources\V1;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserResource extends JsonResource
+class UserRegisterResource extends JsonResource
 {
     protected $collectionToken;
     public function __construct($collection)
     {
         parent::__construct($collection);
         $this->collectionToken = $collection;
-//        print_r($collectionToken);
     }
 
     /**
@@ -25,9 +24,9 @@ class UserResource extends JsonResource
         return [
             'name' => $this->collectionToken['name'],
             'email' => $this->collectionToken['email'],
-            'genders' => $this->collectionToken['genders'],
-            'avatar' => $this->collectionToken['image'],
-            'roles' => $this->collectionToken['roles'],
+            'phone_number' => $this->collectionToken['phone_number'],
+            'genders' => '0',
+            'roles' => '0',
             'token'=> $this->collectionToken['token']
         ];
     }
