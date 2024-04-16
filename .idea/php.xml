@@ -131,6 +131,14 @@
       <path value="$PROJECT_DIR$/project2-BE/vendor/nunomaduro/collision" />
       <path value="$PROJECT_DIR$/project2-BE/vendor/tijsverkoyen/css-to-inline-styles" />
       <path value="$PROJECT_DIR$/project2-BE/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/project2-BE/vendor/darkaonline/l5-swagger" />
+      <path value="$PROJECT_DIR$/project2-BE/vendor/zircote/swagger-php" />
+      <path value="$PROJECT_DIR$/project2-BE/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/project2-BE/vendor/lcobucci/clock" />
+      <path value="$PROJECT_DIR$/project2-BE/vendor/tymon/jwt-auth" />
+      <path value="$PROJECT_DIR$/project2-BE/vendor/swagger-api/swagger-ui" />
+      <path value="$PROJECT_DIR$/project2-BE/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/project2-BE/vendor/doctrine/annotations" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />

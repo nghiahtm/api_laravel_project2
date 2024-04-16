@@ -24,6 +24,8 @@ class ProductResource extends JsonResource
             "createdAt" => $this->created_at,
             "updatedAt" => $this->updated_at,
             "description" => $this->description,
+            "quantity" => $this->quantity,
+            "price" => $this->price,
             "manufacturer" => new ManufacturerResource($manufacturer)
         ];
     }

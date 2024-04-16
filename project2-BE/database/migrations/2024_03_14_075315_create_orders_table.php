@@ -12,6 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
+            $table->string("full_name");
+            $table->string("address");
+            $table->string("phone_number",12);
+            $table->integer("id_user")->nullable();
+            $table->json("products_cart")->nullable();
+            $table->enum("status_order",["0","1","2","3","4","5"])->nullable();
             $table->id();
             $table->timestamps();
         });
