@@ -33,18 +33,31 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'phone' => ['required','regex:/^(?:\+84|0)?[1-9]\d{8,9}$/','unique:'.User::class]
+        ],[
+                'name.required' => 'Please enter your username.',
+                'email.required' => 'Please enter your email.',
+                'email.email' => 'Please enter a valid email address.',
+                'email.unique' => 'This email address is already registered.',
+                'password.required' => 'Please enter your email.',
+                'password.confirmed' => 'The password confirmation does not match.',
+                'phone.required' => 'Please enter your phone number',
+                'phone.regex' => 'Please enter a valid phone number.',
+                'phone.unique' => 'This phone number is already taken.',
         ]);
-
+//        dd($request->phone);
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            "phone" =>$request->phone,
+            'email_verified_at' => now()
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect(route('home', absolute: false));
     }
 }

@@ -17,7 +17,8 @@ class User extends Seeder
             'name' => 'admin',
             'email' => 'admin@gmail.com',
             "role" => "1",
-            "password" => "admin"
+            "password" => "admin",
+            'phone' => "Dung` co' goi. tao"
         ]);
     }
 }
