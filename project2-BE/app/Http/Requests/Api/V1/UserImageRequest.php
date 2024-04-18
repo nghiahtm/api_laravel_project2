@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api\V1;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
+use Tymon\JWTAuth\Contracts\Providers\Auth;
 
-class StoreManufacturersRequest extends FormRequest
+class UserImageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +25,9 @@ class StoreManufacturersRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>['required'],
+            "image"=>"required|mimes:jpeg,jpg,png"
         ];
     }
-
     protected function failedValidation(Validator $validator)
     {
         $exception = $validator->getException();
@@ -37,6 +37,5 @@ class StoreManufacturersRequest extends FormRequest
         ],Response::HTTP_UNPROCESSABLE_ENTITY);
         throw (new $exception($validator,$responseError));
     }
-
-
 }
+

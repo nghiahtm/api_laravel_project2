@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Authentication Defaults
+    | AuthenticationController Defaults
     |--------------------------------------------------------------------------
     |
     | This option defines the default authentication "guard" and password
@@ -14,13 +14,13 @@ return [
     */
 
     'defaults' => [
-        'guard' => env('AUTH_GUARD', 'web'),
-        'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
+        'guard' => 'api',//env('AUTH_GUARD', 'web'),
+        'passwords' => 'users'//env('AUTH_PASSWORD_BROKER', 'users'),
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Authentication Guards
+    | AuthenticationController Guards
     |--------------------------------------------------------------------------
     |
     | Next, you may define every authentication guard for your application.
@@ -38,6 +38,10 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
+            'provider' => 'users',
+        ],
+        'api' => [
+            'driver' => 'jwt',
             'provider' => 'users',
         ],
     ],

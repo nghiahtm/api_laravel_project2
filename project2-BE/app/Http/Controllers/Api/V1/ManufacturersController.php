@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\api\V1;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreManufacturersRequest;
+use App\Http\Requests\Api\V1\StoreManufacturersRequest;
 use App\Http\Requests\UpdateManufacturersRequest;
 use App\Http\Resources\V1\ManufacturerCollection;
 use App\Http\Resources\V1\ManufacturerResource;
@@ -18,7 +18,6 @@ class ManufacturersController extends Controller
      */
     public function index(Request $request)
     {
-//        $products = Manufacturers::with(['products']);
         $perPage = $request->get('perPage');
         if(empty($perPage)){
             $perPage = 10;
@@ -51,7 +50,8 @@ class ManufacturersController extends Controller
      */
     public function show(Manufacturers $manufacturer)
     {
-        return $this->sentSuccessResponse(new ManufacturerResource($manufacturer->loadMissing(['products'])));
+        $manufacturerFind = new ManufacturerResource($manufacturer);
+        return $this->sentSuccessResponse($manufacturerFind);
     }
 
     /**

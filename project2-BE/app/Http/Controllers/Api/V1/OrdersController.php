@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreOrdersRequest;
+use App\Http\Requests\Api\V1\StoreOrdersRequest;
 use App\Http\Requests\UpdateOrdersRequest;
-use App\Models\Orders;
+use App\Http\Resources\V1\CartUserResource;
+use App\Models\OrdersModel;
 
 class OrdersController extends Controller
 {
@@ -14,7 +15,7 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        //
+        return ["123"];
     }
 
     /**
@@ -30,21 +31,21 @@ class OrdersController extends Controller
      */
     public function store(StoreOrdersRequest $request)
     {
-        //
+        $carts = new CartUserResource($request);
+        return $this->sentSuccessResponse($carts);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Orders $orders)
+    public function show(OrdersModel $orders)
     {
-        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Orders $orders)
+    public function edit(OrdersModel $orders)
     {
         //
     }
@@ -52,7 +53,7 @@ class OrdersController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateOrdersRequest $request, Orders $orders)
+    public function update(UpdateOrdersRequest $request, OrdersModel $orders)
     {
         //
     }
@@ -60,7 +61,7 @@ class OrdersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Orders $orders)
+    public function destroy(OrdersModel $orders)
     {
         //
     }

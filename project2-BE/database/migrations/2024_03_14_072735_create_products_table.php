@@ -17,9 +17,9 @@ return new class extends Migration
             $table->integer("price")->nullable();
             $table->integer("quantity")->nullable();
             $table->string("image")->nullable();
-            $table->string("description")->nullable();
-            $table->integer("manufacturer_id")->nullable();
             $table->timestamps();
+            $table->integer("manufacturer_id")->nullable();
+            $table->text("description")->nullable();
         });
     }
 

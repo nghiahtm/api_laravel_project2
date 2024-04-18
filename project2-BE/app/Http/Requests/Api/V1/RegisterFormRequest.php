@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api\V1;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
-class UpdateProductRequest extends FormRequest
+class RegisterFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,12 @@ class UpdateProductRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name'=>['required'],
+        return  [
+            'name' => 'required|string|between:8,100',
+            "email"=>"email|min:8|max:255|unique:users",
+            "phone_number"=>"required|max:12|unique:users",
+            "password"=>"required|min:8|max:255",
+            "confirm_password"=>"required|same:password"
         ];
     }
 

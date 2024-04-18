@@ -15,15 +15,19 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->append([
+            \App\Http\Middleware\EnsureTokenIsValid::class,
+            \App\Http\Middleware\HeadersMiddleware::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->render(function (NotFoundHttpException $e, Request $request) {
             if ($request->is('api/*')) {
                 return response()->json([
                     'message' => $e->getMessage(),
-                    "status_code"=>404
-                ], 404);
+                    "status_code"=>$e->getCode()
+                ], $e->getCode());
             }
+            return $request->expectsJson();
         });
     })->create();

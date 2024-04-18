@@ -17,8 +17,3 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-.idea/phpunit.xml
-.idea/api_laravel_project2.iml
-.idea/codeception.xml
-.idea/php.xml
-.idea/phpspec.xml
