@@ -31,9 +31,8 @@ class OrdersController extends Controller
      */
     public function store(StoreOrdersRequest $request)
     {
-
         $carts = new CartUserResource($request);
-        return $carts;
+        return $this->sentSuccessResponse($carts);
     }
 
     /**
