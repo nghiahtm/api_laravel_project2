@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/api_laravel_project2.iml" filepath="$PROJECT_DIR$/.idea/api_laravel_project2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../breeze/.idea/breeze.iml" filepath="$PROJECT_DIR$/../breeze/.idea/breeze.iml" />
     </modules>
   </component>
 </project>
