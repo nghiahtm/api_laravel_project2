@@ -3,7 +3,10 @@
   <component name="PHPUnit">
     <option name="directories">
       <list>
-        <option value="$PROJECT_DIR$/project2-BE/tests" />
+        <option value="$PROJECT_DIR$/../breeze/tests/Unit" />
+        <option value="$PROJECT_DIR$/../breeze/tests/Feature" />
+        <option value="$PROJECT_DIR$/project2-BE/tests/Unit" />
+        <option value="$PROJECT_DIR$/project2-BE/tests/Feature" />
       </list>
     </option>
   </component>

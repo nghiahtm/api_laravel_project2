@@ -6,6 +6,10 @@
       <sourceFolder url="file://$MODULE_DIR$/project2-BE/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
       <sourceFolder url="file://$MODULE_DIR$/project2-BE/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
       <sourceFolder url="file://$MODULE_DIR$/project2-BE/tests" isTestSource="true" packagePrefix="Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/project2-BE/tests/Feature" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/project2-BE/tests/Unit" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/project2-BE/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/project2-BE/vendor/carbonphp/carbon-doctrine-types" />
       <excludeFolder url="file://$MODULE_DIR$/project2-BE/vendor/composer" />
@@ -23,6 +27,7 @@
       <excludeFolder url="file://$MODULE_DIR$/project2-BE/vendor/guzzlehttp/psr7" />
       <excludeFolder url="file://$MODULE_DIR$/project2-BE/vendor/guzzlehttp/uri-template" />
       <excludeFolder url="file://$MODULE_DIR$/project2-BE/vendor/hamcrest/hamcrest-php" />
+      <excludeFolder url="file://$MODULE_DIR$/project2-BE/vendor/laravel/breeze" />
       <excludeFolder url="file://$MODULE_DIR$/project2-BE/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/project2-BE/vendor/laravel/pint" />
       <excludeFolder url="file://$MODULE_DIR$/project2-BE/vendor/laravel/prompts" />
